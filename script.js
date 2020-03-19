@@ -21,6 +21,17 @@ function searchMeal(e) {
       res =>
         res.json().then(data => {
           console.log(data);
+          resultHeading.innerHTML = `<h2>Search results for '${term}':</h2>`;
+
+          if (data.meals === null) {
+            resultHeading.innerHTML = `<p>There are no search results. Try again!<p>`;
+          } else {
+            mealsElement.innerHTML = data.meals.map(
+              meal => `
+              
+              `
+            );
+          }
         })
     );
   } else {
